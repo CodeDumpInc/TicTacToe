@@ -10,9 +10,12 @@ TEMPLATE = app
 SOURCES += \
     TicTacToeWidget.cpp \
     main.cpp \
+    MainWindow.cpp
 
 HEADERS  += \
-    TicTacToeWidget.h
+    TicTacToeWidget.h \
+    MainWindow.h
 
 FORMS    += \
-    TicTacToeWidget.ui
+    TicTacToeWidget.ui \
+    MainWindow.ui

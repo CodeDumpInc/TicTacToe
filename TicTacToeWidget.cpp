@@ -35,25 +35,12 @@ TicTacToeWidget::TicTacToeWidget(QWidget *parent)
     }
 
     this->connect(m_buttonMapper, SIGNAL(mapped(int)), SLOT(updateButton(int)));
-    this->reset();
+    this->restart();
 }
 
 TicTacToeWidget::~TicTacToeWidget()
 {
     delete ui;
-}
-
-void TicTacToeWidget::reset()
-{
-    foreach(QPushButton *button, m_buttons)
-    {
-        button->setText("");
-        button->setStyleSheet("");
-        button->setEnabled(true);
-    }
-
-    ui->winnerLabel->hide();
-    ui->restartButton->hide();
 }
 
 void TicTacToeWidget::switchPlayer()
@@ -64,7 +51,6 @@ void TicTacToeWidget::switchPlayer()
 void TicTacToeWidget::setDraw()
 {
     ui->winnerLabel->setText("Draw!");
-    ui->restartButton->show();
 }
 
 void TicTacToeWidget::setWon(const QList<QPushButton*> &winningButtons)
@@ -74,7 +60,6 @@ void TicTacToeWidget::setWon(const QList<QPushButton*> &winningButtons)
         button->setStyleSheet("background: lightblue;");
     }
 
-    ui->restartButton->show();
     ui->winnerLabel->show();
     ui->winnerLabel->setText(QString("%1 won!").arg(winningButtons.first()->text()));
 
@@ -152,8 +137,16 @@ void TicTacToeWidget::updateButton(int buttonId)
     this->switchPlayer();
 }
 
-void TicTacToeWidget::on_restartButton_clicked()
+void TicTacToeWidget::restart()
 {
-    this->reset();
+    foreach(QPushButton *button, m_buttons)
+    {
+        button->setText("");
+        button->setStyleSheet("");
+        button->setEnabled(true);
+    }
+
+    ui->winnerLabel->hide();
+
     this->switchPlayer();
 }

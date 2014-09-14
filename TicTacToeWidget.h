@@ -23,11 +23,10 @@ public:
 private:
     void updatePlayerString();
     void setWon(const QList<QPushButton *> &winningButtons);
-    void reset();
     void setDraw();
 
 public slots:
-    void on_restartButton_clicked();
+    void restart();
     void updateButton(int buttonId);
 
 private:
