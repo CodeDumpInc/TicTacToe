@@ -1,5 +1,5 @@
 #include "TicTacToeWidget.h"
-#include "ui_widget.h"
+#include "ui_TicTacToeWidget.h"
 
 #include <QDebug>
 
@@ -48,16 +48,12 @@ void TicTacToeWidget::reset()
     foreach(QPushButton *button, m_buttons)
     {
         button->setText("");
+        button->setStyleSheet("");
+        button->setEnabled(true);
     }
 
     ui->winnerLabel->hide();
     ui->restartButton->hide();
-
-    foreach(QPushButton *button, m_buttons)
-    {
-        button->setStyleSheet("");
-        button->setEnabled(true);
-    }
 }
 
 void TicTacToeWidget::switchPlayer()
