@@ -19,9 +19,7 @@ public:
     explicit TicTacToeWidget(QWidget *parent = 0);
     ~TicTacToeWidget();
 
-    void switchPlayer();
 private:
-    void updatePlayerString();
     void setWon(const QList<QPushButton *> &winningButtons);
     void setDraw();
 

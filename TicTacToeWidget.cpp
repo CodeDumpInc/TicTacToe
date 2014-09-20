@@ -43,11 +43,6 @@ TicTacToeWidget::~TicTacToeWidget()
     delete ui;
 }
 
-void TicTacToeWidget::switchPlayer()
-{
-    ::qSwap(m_playerString.first, m_playerString.second);
-}
-
 void TicTacToeWidget::setDraw()
 {
     ui->winnerLabel->setText("Draw!");
@@ -96,6 +91,7 @@ void TicTacToeWidget::updateButton(int buttonId)
     if(button.text().isEmpty())
     {
         button.setText(m_playerString.first);
+        ::qSwap(m_playerString.first, m_playerString.second);
     }
 
     for(int combination = 0; combination < 8; ++combination)
@@ -134,7 +130,6 @@ void TicTacToeWidget::updateButton(int buttonId)
         return;
     }
 
-    this->switchPlayer();
 }
 
 void TicTacToeWidget::restart()
@@ -147,6 +142,4 @@ void TicTacToeWidget::restart()
     }
 
     ui->winnerLabel->hide();
-
-    this->switchPlayer();
 }
